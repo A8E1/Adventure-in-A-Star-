@@ -1,4 +1,4 @@
-#include "../include/Player.h"
+#include "Player.h"
 
 Player::Player(std::string name_val, Armor armor_val, Weapon weapon_val)
     : name{name_val}, armor{armor_val}, weapon{weapon_val} {}
@@ -40,7 +40,14 @@ void Player::set_weapon(Weapon weapon_val)
 
 void Player::set_health(int health_val)
 {
-    health = health_val;
+    if (health_val < 0)
+    {
+        health = 0;
+    }
+    else
+    {
+        health = health_val;
+    }
 }
 
 void Player::set_strength(int strength_val)

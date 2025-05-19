@@ -9,6 +9,8 @@ include_directories(include)
 # Main executable
 add_executable(AdventureInAStar
     src/main.cpp
+    src/Player.cpp
+    src/Goblin.cpp
 )
 
 # Unit tests
