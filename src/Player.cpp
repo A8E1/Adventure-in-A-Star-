@@ -1,0 +1,29 @@
+#include "../include/Player.h"
+
+Player::Player(std::string name_val, Armor armor_val, Weapon weapon_val)
+    : name{name_val}, armor{armor_val}, weapon{weapon_val} {}
+
+std::string Player::get_name() const
+{
+    return name;
+}
+
+std::string Player::get_armor() const
+{
+    return armor_to_string(armor);
+}
+
+std::string Player::get_weapon() const
+{
+    return weapon_to_string(weapon);
+}
+
+int Player::get_health() const
+{
+    return health;
+}
+
+int Player::get_strength() const
+{
+    return strength;
+}
