@@ -11,6 +11,7 @@ add_executable(AdventureInAStar
     src/main.cpp
     src/Player.cpp
     src/Goblin.cpp
+    src/Room.cpp
 )
 
 # Unit tests
