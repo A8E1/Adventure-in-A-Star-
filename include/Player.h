@@ -9,7 +9,7 @@ enum class Armor
     elite
 };
 
-std::string armor_to_string(Armor armor)
+inline std::string armor_to_string(Armor armor)
 {
     switch (armor)
     {
@@ -34,7 +34,7 @@ enum class Weapon
     elite
 };
 
-std::string weapon_to_string(Weapon weapon)
+inline std::string weapon_to_string(Weapon weapon)
 {
     switch (weapon)
     {

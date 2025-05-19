@@ -9,12 +9,18 @@ enum class GoblinType
     warlord
 };
 
-std::string goblin_type_to_string(GoblinType type)
+inline std::string goblin_type_to_string(GoblinType type)
 {
     switch (type)
     {
     case GoblinType::minion:
         return "minion";
+    case GoblinType::warrior:
+        return "warrior";
+    case GoblinType::general:
+        return "general";
+    case GoblinType::warlord:
+        return "warlord";
     }
 }
 

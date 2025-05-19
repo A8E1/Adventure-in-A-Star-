@@ -9,7 +9,7 @@ enum class RoomType
     advanced
 };
 
-std::string room_type_to_string(RoomType type)
+inline std::string room_type_to_string(RoomType type)
 {
     switch (type)
     {
@@ -27,7 +27,7 @@ std::string room_type_to_string(RoomType type)
 class Room
 {
 public:
-    Room(std::string name_val, RoomType type_val);
+    Room(std::string name_val = "None", RoomType type_val = RoomType::training);
 
     std::string get_name() const;
     std::string get_description() const;

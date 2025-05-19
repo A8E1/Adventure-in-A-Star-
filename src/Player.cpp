@@ -1,7 +1,13 @@
 #include "Player.h"
 
 Player::Player(std::string name_val, Armor armor_val, Weapon weapon_val)
-    : name{name_val}, armor{armor_val}, weapon{weapon_val} {}
+{
+    name = name_val;
+    armor = armor_val;
+    weapon = weapon_val;
+    health = 100;
+    strength = 0;
+}
 
 std::string Player::get_name() const
 {
