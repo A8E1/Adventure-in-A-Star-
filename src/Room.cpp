@@ -1,4 +1,10 @@
 #include "Room.h"
+#include "Player.h"
+#include "Goblin.h"
+#include "Minion.h"
+#include "Brute.h"
+#include "General.h"
+#include "Warlord.h"
 
 Room::Room(RoomType type_val)
     : type(type_val) {}
@@ -38,14 +44,40 @@ void Room::set_type(RoomType type_val)
     type = type_val;
 }
 
-int Room::win_prob()
+int Room::win_prob(const Player &player, const Goblin &goblin)
 {
-    return 0;
+    if (player.get_strength() > goblin.get_strength())
+    {
+        return 100;
+    }
+    else if (player.get_strength() == goblin.get_strength())
+    {
+        return 50;
+    }
+    else
+    {
+        return rand() % 25 + 1;
+    }
 }
 
 std::string Room::generate_enemy()
 {
-    return "enemy";
+    if (type == RoomType::training)
+    {
+        return "Minion";
+    }
+    else if (type == RoomType::beginner)
+    {
+        return "Brute";
+    }
+    else if (type == RoomType::intermediate)
+    {
+        return "General";
+    }
+    else if (type == RoomType::advanced)
+    {
+        return "Warlord";
+    }
 }
 
 std::string Room::generate_loot()

@@ -40,6 +40,7 @@ inline std::string weapon_to_string(Weapon weapon)
     {
     case Weapon::dull:
         return "dull";
+        // str =
     case Weapon::reg:
         return "reg";
     case Weapon::strong:

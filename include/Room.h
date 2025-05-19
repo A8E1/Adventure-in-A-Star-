@@ -41,7 +41,7 @@ public:
     std::string generate_enemy();
     std::string generate_loot();
     std::string attack_chain();
-    int win_prob();
+    int win_prob(const Player &player, const Goblin &goblin);
 
 private:
     std::string room_llm_context;
