@@ -67,9 +67,6 @@ public:
     void set_health(int health_val);
     void set_strength(int strength_val);
 
-    void add_health(int health_val);
-    void add_strength(int strength_val);
-
 private:
     std::string name;
     int health;

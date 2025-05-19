@@ -27,3 +27,23 @@ int Player::get_strength() const
 {
     return strength;
 }
+
+void Player::set_armor(Armor armor_val)
+{
+    armor = armor_val;
+}
+
+void Player::set_weapon(Weapon weapon_val)
+{
+    weapon = weapon_val;
+}
+
+void Player::set_health(int health_val)
+{
+    health = health_val;
+}
+
+void Player::set_strength(int strength_val)
+{
+    strength = strength_val;
+}
