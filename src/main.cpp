@@ -1,12 +1,16 @@
 #include <iostream>
 #include "Player.h"
 #include "Goblin.h"
+#include "Minion.h"
+#include "Brute.h"
+#include "General.h"
+#include "Warlord.h"
 #include "Room.h"
 
 int main()
 {
-    Player player("John");
-    Goblin goblin("Goblin", GoblinType::minion);
+    Player player("Gong");
+    Minion minion("Goblin");
     Room room("Room", RoomType::training);
 
     std::cout << "Welcome to Adventure in A-Star!" << std::endl;
