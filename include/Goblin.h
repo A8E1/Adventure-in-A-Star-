@@ -1,46 +1,33 @@
 #pragma once
 #include <string>
-
-enum class GoblinType
-{
-    minion,
-    warrior,
-    general,
-    warlord
-};
-
-inline std::string goblin_type_to_string(GoblinType type)
-{
-    switch (type)
-    {
-    case GoblinType::minion:
-        return "minion";
-    case GoblinType::warrior:
-        return "warrior";
-    case GoblinType::general:
-        return "general";
-    case GoblinType::warlord:
-        return "warlord";
-    }
-}
-
 class Goblin
 {
 
 public:
-    Goblin(std::string name_val = "None", GoblinType type_val = GoblinType::minion);
+    Goblin(std::string name_val, int health_val, int strength_val)
+    {
+        name = name_val;
+        health = health_val;
+        strength = strength_val;
+    }
 
-    std::string get_name() const;
-    std::string get_type() const;
-    int get_health() const;
-    int get_strength() const;
+    virtual std::string get_name() const { return name; }
+    virtual int get_health() const { return health; }
+    virtual int get_strength() const { return strength; }
 
-    void set_health(int health_val);
-    void set_strength(int strength_val);
+    virtual void take_damage(int damage_val)
+    {
+        health -= damage_val;
+        if (health < 0)
+        {
+            health = 0;
+        }
+    }
+    virtual std::string attack() = 0;
+    virtual ~Goblin() = default;
 
-private:
+protected:
     std::string name;
     int health;
     int strength;
-    GoblinType type;
 };
