@@ -64,8 +64,7 @@ public:
 
     void set_armor(Armor armor_val);
     void set_weapon(Weapon weapon_val);
-    void set_health(int health_val);
-    void set_strength(int strength_val);
+    void take_damage(int damage_val);
 
 private:
     std::string name;

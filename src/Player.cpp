@@ -37,16 +37,53 @@ int Player::get_strength() const
 void Player::set_armor(Armor armor_val)
 {
     armor = armor_val;
+
+    switch (armor_val)
+    {
+    case Armor::leather:
+        health += 10;
+        break;
+    case Armor::reg:
+        health += 30;
+        break;
+    case Armor::strong:
+        health += 50;
+        break;
+    case Armor::elite:
+        health += 100;
+        break;
+    default:
+        break;
+    }
 }
 
 void Player::set_weapon(Weapon weapon_val)
 {
     weapon = weapon_val;
+
+    switch (weapon_val)
+    {
+    case Weapon::dull:
+        strength += 5;
+        break;
+    case Weapon::reg:
+        strength += 10;
+        break;
+    case Weapon::strong:
+        strength += 20;
+        break;
+    case Weapon::elite:
+        strength += 50;
+        break;
+    default:
+        break;
+    }
 }
 
-void Player::set_health(int health_val)
+void Player::take_damage(int damage_val)
 {
-    if (health_val < 0)
+    health -= damage_val;
+    if (health < 0)
     {
         health = 0;
     }
@@ -54,9 +91,4 @@ void Player::set_health(int health_val)
     {
         health = health_val;
     }
-}
-
-void Player::set_strength(int strength_val)
-{
-    strength = strength_val;
 }
