@@ -89,6 +89,6 @@ void Player::take_damage(int damage_val)
     }
     else
     {
-        health = health_val;
+        health = damage_val;
     }
 }
