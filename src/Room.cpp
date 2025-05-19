@@ -1,16 +1,11 @@
 #include "Room.h"
 
-Room::Room(std::string name_val, RoomType type_val)
-    : name(name_val), type(type_val) {}
+Room::Room(RoomType type_val)
+    : type(type_val) {}
 
-std::string Room::get_name() const
+std::string Room::get_setting() const
 {
-    return name;
-}
-
-std::string Room::get_description() const
-{
-    return description;
+    return room_setting;
 }
 
 std::string Room::get_type() const
@@ -18,9 +13,24 @@ std::string Room::get_type() const
     return room_type_to_string(type);
 }
 
-void Room::set_description(std::string description_val)
+int Room::get_curr_move_num() const
 {
-    description = description_val;
+    return curr_move_num;
+}
+
+int Room::get_loot_prob_for_next_move() const
+{
+    return loot_prob_for_next_move;
+}
+
+int Room::get_fight_prob_for_next_move() const
+{
+    return fight_prob_for_next_move;
+}
+
+void Room::set_setting(std::string setting_val)
+{
+    room_setting = setting_val;
 }
 
 void Room::set_type(RoomType type_val)
@@ -28,7 +38,22 @@ void Room::set_type(RoomType type_val)
     type = type_val;
 }
 
-void Room::set_name(std::string name_val)
+int Room::win_prob()
 {
-    name = name_val;
+    return 0;
+}
+
+std::string Room::generate_enemy()
+{
+    return "enemy";
+}
+
+std::string Room::generate_loot()
+{
+    return "loot";
+}
+
+std::string Room::attack_chain()
+{
+    return "attack chain";
 }

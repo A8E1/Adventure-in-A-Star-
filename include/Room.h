@@ -27,19 +27,29 @@ inline std::string room_type_to_string(RoomType type)
 class Room
 {
 public:
-    Room(std::string name_val = "None", RoomType type_val = RoomType::training);
+    Room(RoomType type_val = RoomType::training);
 
-    std::string get_name() const;
-    std::string get_description() const;
+    std::string get_setting() const;
     std::string get_type() const;
+    int get_curr_move_num() const;
+    int get_loot_prob_for_next_move() const;
+    int get_fight_prob_for_next_move() const;
 
-    void set_description(std::string description_val);
+    void set_setting(std::string setting_val);
     void set_type(RoomType type_val);
-    void set_name(std::string name_val);
+
+    std::string generate_enemy();
+    std::string generate_loot();
+    std::string attack_chain();
+    int win_prob();
 
 private:
-    std::string name;
-    std::string description;
+    std::string room_llm_context;
+    std::string room_setting;
+    int curr_move_num;
+
+    int loot_prob_for_next_move;
+    int fight_prob_for_next_move;
+
     RoomType type;
-    std::vector<std::string> movement_options;
 };
