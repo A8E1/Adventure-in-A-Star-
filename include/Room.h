@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "Player.h"
+#include "Goblin.h"
 enum class RoomType
 {
     training,
@@ -20,6 +22,8 @@ inline std::string room_type_to_string(RoomType type)
     case RoomType::intermediate:
         return "intermediate";
     case RoomType::advanced:
+        return "advanced";
+    default:
         return "advanced";
     }
 }
@@ -41,7 +45,7 @@ public:
     std::string generate_enemy();
     std::string generate_loot();
     std::string attack_chain();
-    int win_prob(const Player &player, const Goblin &goblin);
+    int win_or_lose(const Player &player, const Goblin &goblin);
 
 private:
     std::string room_llm_context;

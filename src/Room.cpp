@@ -5,6 +5,7 @@
 #include "Brute.h"
 #include "General.h"
 #include "Warlord.h"
+#include <random>
 
 Room::Room(RoomType type_val)
     : type(type_val) {}
@@ -44,19 +45,22 @@ void Room::set_type(RoomType type_val)
     type = type_val;
 }
 
-int Room::win_prob(const Player &player, const Goblin &goblin)
+int Room::win_or_lose(const Player &player, const Goblin &goblin)
 {
     if (player.get_strength() > goblin.get_strength())
     {
-        return 100;
+        return 1;
     }
     else if (player.get_strength() == goblin.get_strength())
     {
-        return 50;
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dist(0, 1);
+        return dist(gen);
     }
     else
     {
-        return rand() % 25 + 1;
+        return 0;
     }
 }
 
@@ -74,7 +78,7 @@ std::string Room::generate_enemy()
     {
         return "General";
     }
-    else if (type == RoomType::advanced)
+    else
     {
         return "Warlord";
     }

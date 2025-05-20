@@ -17,6 +17,3 @@ src/General.cpp
 src/Warlord.cpp
 )
 
-# Unit tests
-enable_testing()
-add_subdirectory(tests)

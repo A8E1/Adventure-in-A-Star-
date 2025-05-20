@@ -11,7 +11,7 @@ int main()
 {
     Player player("Gong");
     Minion minion("Goblin");
-    Room room("Room", RoomType::training);
+    Room room(RoomType::training);
 
     std::cout << "Welcome to Adventure in A-Star!" << std::endl;
     std::cout << "You are a player named " << player.get_name() << std::endl;
