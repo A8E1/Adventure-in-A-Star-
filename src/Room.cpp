@@ -6,6 +6,7 @@
 #include "General.h"
 #include "Warlord.h"
 #include <random>
+#include <iostream>
 
 Room::Room(RoomType type_val)
     : type(type_val) {}
@@ -92,4 +93,47 @@ std::string Room::generate_loot()
 std::string Room::attack_chain()
 {
     return "attack chain";
+}
+
+std::string Room::move_result()
+{
+    std::string result;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, 99);
+
+    if (dis(gen) < loot_prob_for_next_move)
+    {
+        result = "loot";
+        loot_prob_for_next_move = 0;
+        fight_prob_for_next_move += 40;
+        return "You found a treasure chest! You gain 1000 gold and 10000 experience points.";
+    }
+    else if (dis(gen) < fight_prob_for_next_move)
+    {
+        result = "fight";
+        fight_prob_for_next_move = 0;
+        loot_prob_for_next_move += 10;
+        return "You found a goblin! You must fight and win to continue.";
+    }
+    else
+    {
+        result = "move";
+        loot_prob_for_next_move += 30;
+        fight_prob_for_next_move += 30;
+        return "You are in a forest. Keep moving.";
+    }
+}
+
+std::string Room::player_action()
+{
+    std::string action;
+    std::cout << "What do you want to do? (l, a, m)" << std::endl;
+    std::cin >> action;
+    return action;
+}
+
+void Room::increment_curr_move_num()
+{
+    curr_move_num += 1;
 }

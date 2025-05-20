@@ -41,11 +41,15 @@ public:
 
     void set_setting(std::string setting_val);
     void set_type(RoomType type_val);
+    void increment_curr_move_num();
 
     std::string generate_enemy();
     std::string generate_loot();
     std::string attack_chain();
     int win_or_lose(const Player &player, const Goblin &goblin);
+
+    std::string player_action();
+    std::string move_result();
 
 private:
     std::string room_llm_context;
