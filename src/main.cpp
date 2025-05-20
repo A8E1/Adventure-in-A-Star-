@@ -43,11 +43,12 @@ int main()
         std::string action = room.player_action();
         std::cout << room.move_result() << std::endl;
         room.increment_curr_move_num();
+
         if (room.get_curr_move_num() == 15 && room.get_type() != "advanced")
         {
             room = Room(next_room(room.get_type()));
         }
-        else
+        else if (room.get_curr_move_num() == 15 && room.get_type() == "advanced")
         {
             std::cout << "You have reached the end of the game!" << std::endl;
             break;

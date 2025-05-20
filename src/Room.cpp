@@ -9,7 +9,7 @@
 #include <iostream>
 
 Room::Room(RoomType type_val)
-    : type(type_val) {}
+    : type(type_val), curr_move_num(0), loot_prob_for_next_move(30), fight_prob_for_next_move(30) {}
 
 std::string Room::get_setting() const
 {
@@ -102,7 +102,11 @@ std::string Room::move_result()
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(0, 99);
 
-    if (dis(gen) < loot_prob_for_next_move)
+    if (curr_move_num == 14)
+    {
+        return "Door to go to new room is open!";
+    }
+    else if (dis(gen) < loot_prob_for_next_move)
     {
         result = "loot";
         loot_prob_for_next_move = 0;
